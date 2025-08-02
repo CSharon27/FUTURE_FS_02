@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Products</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="lavender-header">
+    <h1>Our Products</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="likes.html">My Wishlist</a>
+      <a href="cart.html">Cart (<span id="cart-count">0</span>)</a>
+    </nav>
+  </header>
+
+  <!-- 🔍 Search bar -->
+  <div class="search-bar">
+    <input type="text" id="search-input" placeholder="Search for products..." />
+    <button onclick="searchProducts()">Search</button>
+  </div>
+
+  <!-- 🧭 Category buttons -->
+  <section class="filters">
+    <button onclick="filterCategory('all')">All</button>
+    <button onclick="filterCategory('shoes')">Shoes</button>
+    <button onclick="filterCategory('shirts')">Shirts</button>
+    <button onclick="filterCategory('accessories')">Accessories</button>
+  </section>
+
+  <!-- 🛍️ Product display -->
+  <div id="product-list" class="product-grid"></div>
+
+  <script src="js/main.js"></script>
+  <footer class="site-footer">
+  <p>&copy; 2025 Sazzy Vogue. All rights reserved.</p>
+  </footer>
+</body>
+</html>

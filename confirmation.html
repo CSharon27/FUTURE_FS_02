@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Order Confirmation</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="lavender-header">
+    <h1>Order Confirmed ✅</h1>
+  </header>
+
+  <div class="confirmation-container">
+    <h2>Thank you, <span id="customer-name">Customer</span>!</h2>
+    <p>Your order has been placed successfully.</p>
+    <p><strong>Order ID:</strong> <span id="order-id"></span></p>
+    <p><strong>Total Amount:</strong> ₹<span id="order-total"></span></p>
+
+    <a href="index.html"><button>Return to Home</button></a>
+  </div>
+
+  <script>
+    const order = JSON.parse(localStorage.getItem("lastOrder"));
+
+    if (!order) {
+      document.body.innerHTML = "<p style='text-align:center;'>No order found.</p>";
+    } else {
+      document.getElementById("customer-name").textContent = order.name;
+      document.getElementById("order-id").textContent = order.id;
+      document.getElementById("order-total").textContent = order.total;
+      localStorage.removeItem("lastOrder");
+    }
+  </script>
+  <footer class="site-footer">
+  <p>&copy; 2025 Sazzy Vogue. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

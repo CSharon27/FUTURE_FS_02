@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Shop - Home</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="lavender-header">
+    <h1>Sazzy Vogue</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="products.html">Products</a>
+      <a href="likes.html">Liked</a>
+      <a href="cart.html">Cart (<span id="cart-count">0</span>)</a>
+    </nav>
+  </header>
+
+  <!-- Hero Banner -->
+  <section class="hero-banner">
+    <h2>Biggest Sale of the Season!</h2>
+    <p>Up to 50% off on all categories</p>
+    <a href="products.html" class="btn">Shop Now</a>
+  </section>
+
+  <!-- Popular Products -->
+  <section class="home-section">
+    <h2>Most Popular</h2>
+    <div id="popular-products" class="product-grid"></div>
+  </section>
+
+  <!-- Trendy Collections -->
+  <section class="home-section">
+    <h2>Trendy Collections</h2>
+    <div class="trendy-banner">
+      <a href="products.html#shoes" class="trendy-box"><h3>Shoes</h3></a>
+      <a href="products.html#shirts" class="trendy-box"><h3>Shirts</h3></a>
+      <a href="products.html#accessories" class="trendy-box"><h3>Accessories</h3></a>
+    </div>
+  </section>
+
+  <!-- Special Offers -->
+  <section class="home-section offers">
+    <h2>Special Offers</h2>
+    <p>Use code <strong>FESTIVE20</strong> to get 20% off on your first order!</p>
+    <a href="products.html" class="btn">Grab Offer</a>
+  </section>
+
+  <script>
+    // Update cart count
+    document.getElementById("cart-count").innerText =
+      JSON.parse(localStorage.getItem("cart"))?.reduce((a, b) => a + b.qty, 0) || 0;
+
+    // Show 1 product per category
+    const products = [
+      { id: 1, name: "Running Shoes", price: 1200, img: "images/shoes1.jpg", category: "shoes" },
+      { id: 5, name: "Formal Shirt", price: 900, img: "images/shirt1.jpg", category: "shirts" },
+      { id: 9, name: "Watch", price: 1500, img: "images/accessory1.jpg", category: "accessories" }
+    ];
+
+    const popularContainer = document.getElementById("popular-products");
+
+    products.forEach(product => {
+      const div = document.createElement("div");
+      div.className = "product-card";
+      div.innerHTML = `
+        <img src="${product.img}" alt="${product.name}">
+        <h3>${product.name}</h3>
+        <p>₹${product.price}</p>
+        <a href="products.html#${product.category}" class="btn-sm">View</a>
+      `;
+      popularContainer.appendChild(div);
+    });
+  </script>
+  <footer class="site-footer">
+  <p>&copy; 2025 Sazzy Vogue. All rights reserved.</p>
+  </footer>
+</body>
+</html>
